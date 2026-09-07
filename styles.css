@@ -1,0 +1,19 @@
+*{margin: 0; padding: 0;}
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+main{
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+}
+
+.book-list{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px; 
+
+
+}

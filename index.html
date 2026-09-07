@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+            <header>
+                <h1>Library</h1> 
+                <button id="show">Add New Book</button>
+            </header>
+            
+                <div class="book-list">
+                    
+                </div>
+                <dialog id="bookDialog">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h2>Add New Book</h2>
+                    <!-- This form method closes the dialog immediately when clicked -->
+                    <form method="dialog">
+                    <button aria-label="Close modal" id="close">&times;</button>
+                    </form>
+                </div>
+
+                <!-- Main input form using the dialog method to submit/close natively -->
+                <form method="dialog" id="bookForm">
+                    
+                    <!-- Title Input -->
+                    <div style="margin-bottom: 12px;">
+                    <label for="bookTitle" style="display: block; font-weight: bold;">Title:</label>
+                    <input type="text" id="bookTitle" name="title" required placeholder="The Hobbit">
+                    </div>
+
+                    <!-- Author Input -->
+                    <div style="margin-bottom: 12px;">
+                    <label for="bookAuthor" style="display: block; font-weight: bold;">Author:</label>
+                    <input type="text" id="bookAuthor" name="author" required placeholder="J.R.R. Tolkien">
+                    </div>
+
+                    <!-- Number of Pages Input -->
+                    <div style="margin-bottom: 12px;">
+                    <label for="bookPages" style="display: block; font-weight: bold;">Number of Pages:</label>
+                    <input type="number" id="bookPages" name="pages" min="1" required placeholder="310">
+                    </div>
+
+                    <!-- Is Read Checkbox -->
+                    <div style="margin-bottom: 16px;">
+                    <input type="checkbox" id="bookIsRead" name="isRead">
+                    <label for="bookIsRead">Have you read this book?</label>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div style="display: flex; justify-content: flex-end; gap: 8px;">
+                    <!-- Both buttons close the dialog natively because the parent form uses method="dialog" -->
+                    <button type="button" onclick="this.closest('dialog').close()">Cancel</button>
+                    <button type="submit">Save Book</button>
+                    </div>
+
+                </form>
+                </dialog>
+
+            
+
+    </main>
+
+    <script type="module" src="javascript.js"></script>
+</body>
+</html>
