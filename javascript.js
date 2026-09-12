@@ -3,6 +3,7 @@ const dialog = document.getElementById("bookDialog");
 const openBtn = document.getElementById("show");
 const closeBtn = document.getElementById("close");
 
+
 openBtn.addEventListener('click', () => {
   dialog.showModal(); 
 });
@@ -36,6 +37,12 @@ function Book() {
 }
 
 function addBookToLibrary(book) {
-  
+
+}
+
+function displayBooks(){
+    myLibrary.forEach(element => {
+    
+  });
 }
 
