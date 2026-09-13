@@ -38,13 +38,38 @@ function addBookToLibrary(book) {
 }
 
 function displayBooks(){
-
+  container.replaceChildren();
   myLibrary.forEach(element => {
 
     const newElement = document.createElement("div");
-    newElement.textContent =  element.displaySelf;
-    container.appendChild(newElement);
+    const newHeader = document.createElement("h1");
+    newHeader.textContent = "Title: " + element.title;
+
+    const lineOne = document.createElement("h2");
+    lineOne.textContent = "Author: "+ element.author;
+
+    const lineTwo = document.createElement("h2");
+    lineTwo.textContent = "Number of Pages: " + element.numOfPages;
+
+    if (element.isRead) {
+
+      const bookStatus = document.createElement("p");
+      bookStatus.textContent = "Book has already been read";
+      
+    } else{
+      const bookStatus = document.createElement("p");
+      bookStatus.textContent = "Book has not yet been read";
+    }
+
+    newElement.appendChild(newHeader);
+    newElement.appendChild(lineOne);
+    newElement.appendChild(lineTwo);
+    //newElement.appendChild(bookStatus);
+
     newElement.classList.add("book-card")
+
+    container.appendChild(newElement);
+
   });
 }
 
@@ -61,7 +86,7 @@ dialog.addEventListener('close',()=>{
     const pages = Number(data.pages);
 
     console.log("Captured Data: ",data);
-    const book = new Book(data.title, data.author,pages, data.isRead);
+    const book = new Book(data.title, data.author,pages, isRead);
     addBookToLibrary(book);
 
     displayBooks();
