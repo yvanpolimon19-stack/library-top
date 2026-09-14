@@ -22,7 +22,7 @@
                     <h2>Add New Book</h2>
                     <!-- This form method closes the dialog immediately when clicked -->
                     <form method="dialog">
-                    <button aria-label="Close modal" id="close">&times;</button>
+                    <button aria-label="Close modal" id="close" value="none">&times;</button>
                     </form>
                 </div>
 
@@ -56,7 +56,7 @@
                     <!-- Form Actions -->
                     <div style="display: flex; justify-content: flex-end; gap: 8px;">
                     <!-- Both buttons close the dialog natively because the parent form uses method="dialog" -->
-                    <button type="button" onclick="this.closest('dialog').close()">Cancel</button>
+                    <button type="button" onclick="this.closest('dialog').close('cancel')">Cancel</button>
                     <button type="submit" value="submitted">Save Book</button>
                     </div>
 

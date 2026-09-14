@@ -5,6 +5,7 @@ const closeBtn = document.getElementById("close");
 const form = document.getElementById("bookForm");
 const myLibrary = [];
 
+
 function Book(title, author, numOfPages, isRead) {
 
     this.title = title;
@@ -61,9 +62,22 @@ function displayBooks(){
       bookStatus.textContent = "Book has not yet been read";
     }
 
+    const removeButton = document.createElement("button");
+
+    removeButton.text = "Remove Book";
+    removeButton.type = "button";
+    removeButton.id = element.randomUUID;
+
+    removeButton.addEventListener("click",()=>{
+      const filteredBooks = myLibrary.filter(book => book.randomUUID !== removeButton.id);
+    })
+
+    
+
     newElement.appendChild(newHeader);
     newElement.appendChild(lineOne);
     newElement.appendChild(lineTwo);
+    newElement.appendChild(removeButton);
     //newElement.appendChild(bookStatus);
 
     newElement.classList.add("book-card")
@@ -76,16 +90,18 @@ function displayBooks(){
 
 
 dialog.addEventListener('close',()=>{
+
   if(dialog.returnValue === "submitted"){
 
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
-     const isRead = formData.has('isRead');
+    const isRead = formData.has('isRead');
 
     const pages = Number(data.pages);
 
     console.log("Captured Data: ",data);
+    
     const book = new Book(data.title, data.author,pages, isRead);
     addBookToLibrary(book);
 
@@ -94,6 +110,10 @@ dialog.addEventListener('close',()=>{
     form.reset();
   }
 })
+
+
+
+
 
 
 
